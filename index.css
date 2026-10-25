@@ -1,0 +1,327 @@
+/* Variables globales */
+
+:root {
+    /* Colores */
+    --color-fondo: rgb(31, 31, 31);
+    --color-fondo-tarjeta: rgb(42, 42, 42);
+    --color-brillo-tarjeta: rgb(70, 70, 70);
+    --color-principal: orange;
+    --color-principal-oscuro: rgb(230, 140, 0);
+    --color-texto-claro: white;
+    --color-texto-suave: rgb(172, 172, 172);
+    --color-texto-oscuro: black;
+    --color-capa-oscura: rgba(0, 0, 0, 0.55);
+    --color-sombra: rgba(0, 0, 0, 0.4);
+
+    /* Espaciados */
+    --espaciado-section: 1.25rem;
+    --espaciado-section-vertical: 3rem;
+    --espaciado-boton: 0.625rem;
+
+    /* Bordes y transiciones */
+    --borde-redondeado: 1rem;
+    --duracion-transicion: 0.4s;
+
+    /* Texto */
+    --fuente-texto: 'DM Sans', sans-serif;
+    --fuente-titulos: 'Manrope', sans-serif;
+    --tamanio-texto: 1.1rem;
+}
+
+/* Generales */
+
+/* Esto es un reset para sacar los márgenes que tiene el navegador por defecto 
+y border-box para que el padding no agrande los elementos. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-texto);
+    background-color: var(--color-fondo);
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--fuente-titulos);
+    color: var(--color-texto-claro);
+}
+
+h1 {
+    font-size: clamp(1.75rem, 5vw, 3rem); /* Escala el h1 según el ancho de pantalla */
+    font-weight: 800;
+}
+
+p {
+    font-size: var(--tamanio-texto);
+    line-height: 1.3;
+    color: var(--color-texto-suave);
+}
+
+.resaltado {
+    color: var(--color-principal);
+}
+
+.section-titulo {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.section-titulo h2 {
+    margin-bottom: 0.5rem;
+}
+
+/* Botones generales */
+.boton, .catalogo-opcion {
+    border-radius: var(--borde-redondeado);
+    font-family: inherit;
+    font-size: var(--tamanio-texto);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.boton {
+    display: inline-block;
+    padding: var(--espaciado-boton);
+    border: none;
+    text-decoration: none;
+    color: var(--color-texto-oscuro);
+    background-color: var(--color-principal);
+    transition: background-color var(--duracion-transicion);
+}
+
+.boton:hover, .boton:focus-visible {
+    background-color: var(--color-principal-oscuro);
+}
+
+/* Header */
+.header {
+    padding: var(--espaciado-section);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo img {
+    height: 3.5rem;
+}
+
+.header-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    list-style: none;
+}
+
+.header-item a {
+    font-size: var(--tamanio-texto);
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-texto-claro);
+    transition: color var(--duracion-transicion);
+}
+
+.header-item a:hover, .header-item a:focus-visible {
+    color: var(--color-principal);
+}
+
+/* Hero */
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    padding: var(--espaciado-section);
+    text-align: center;
+    background-image:
+        linear-gradient(var(--color-capa-oscura), var(--color-capa-oscura)), /* Oscurece la foto para que se lea el texto */
+        url('assets/hero.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero p {
+    margin-top: 1rem;
+    color: var(--color-texto-claro);
+}
+
+.hero .boton {
+    margin-top: 1.5rem;
+}
+
+/* Secciones con el mismo espaciado */
+.catalogo, .contacto {
+    padding: var(--espaciado-section-vertical) var(--espaciado-section);
+}
+
+/* Catálogo */
+.catalogo-selector {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.catalogo-opcion {
+    padding: 1rem 2rem;
+    border: 2px solid var(--color-principal);
+    color: var(--color-texto-claro);
+    background-color: var(--color-fondo-tarjeta);
+    transition: background-color var(--duracion-transicion), color var(--duracion-transicion);
+}
+
+.catalogo-opcion:hover, .catalogo-opcion:focus-visible {
+    color: var(--color-texto-oscuro);
+    background-color: var(--color-principal);
+}
+
+.catalogo-panel h3 {
+    margin: 1rem 0 1.5rem;
+}
+
+.catalogo-volver {
+    display: inline-block;
+    padding: 0.5rem 0;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-principal);
+    transition: transform var(--duracion-transicion), color var(--duracion-transicion);
+}
+
+.catalogo-volver:hover, .catalogo-volver:focus-visible {
+    color: var(--color-texto-claro);
+    transform: translateX(-4px);
+}
+
+.tarjeta-auto {
+    height: 100%;
+    border-radius: var(--borde-redondeado);
+    overflow: hidden;
+    background-color: var(--color-fondo-tarjeta);
+    transition: transform var(--duracion-transicion), box-shadow var(--duracion-transicion);
+}
+
+.tarjeta-auto:hover {
+    box-shadow: 0 10px 24px var(--color-sombra);
+    transform: translateY(-6px);
+}
+
+.tarjeta-auto img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    padding: 1rem;
+    object-fit: contain;
+    background: radial-gradient(circle, var(--color-brillo-tarjeta), var(--color-fondo-tarjeta));
+}
+
+.tarjeta-auto-cuerpo {
+    padding: 1rem;
+}
+
+.tarjeta-auto-cuerpo h4 {
+    margin-bottom: 0.5rem;
+}
+
+/* Contacto */
+.contacto-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 36rem;
+    margin: 0 auto;
+}
+
+.contacto-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.contacto-campo label {
+    color: var(--color-texto-suave);
+}
+
+.contacto-campo input, .contacto-campo textarea {
+    padding: 0.75rem 1rem;
+    border: 2px solid transparent;
+    border-radius: var(--borde-redondeado);
+    font-family: inherit;
+    font-size: var(--tamanio-texto);
+    color: var(--color-texto-claro);
+    background-color: var(--color-fondo-tarjeta);
+    transition: border-color var(--duracion-transicion);
+}
+
+.contacto-campo input:focus, .contacto-campo textarea:focus {
+    border-color: var(--color-principal);
+    outline: none;
+}
+
+.mensaje-confirmacion-formulario {
+    font-size: 1.25rem;
+    text-align: center;
+    color: var(--color-principal);
+}
+
+/* Footer */
+.footer {
+    padding: 1rem var(--espaciado-section);
+    background-color: var(--color-fondo-tarjeta);
+}
+
+.footer .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem 1.5rem;
+}
+
+.footer address {
+    font-style: normal;
+    color: var(--color-texto-suave);
+}
+
+.footer .derechos {
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 575.98px) {
+    :root {
+        --espaciado-section-vertical: 2rem;
+    }
+
+    .header-logo img {
+        height: 2.75rem;
+    }
+
+    .header-lista {
+        gap: 0.5rem 1rem;
+    }
+
+    .hero {
+        min-height: 50vh;
+    }
+
+    .footer .container {
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 359.98px) {
+    .header .container {
+        flex-direction: column;
+    }
+}
+
+/* Utilidades */
+.oculto {
+    display: none;
+}
